@@ -1,5 +1,6 @@
 import { AddSong } from '../../types/songsType';
 import { addMusic, getMusic } from '../../utils/firebase';
+import Song from '../Song/song';
 
 const formData: Omit<AddSong, 'id'> = {
 	image: '',
@@ -76,14 +77,14 @@ export default class SongCard extends HTMLElement {
 			this.shadowRoot?.appendChild(container);
 
 			const save = this.ownerDocument.createElement('button');
-			save.innerText = 'ADD';
+			save.innerText = 'Add';
 			save.addEventListener('click', this.submitForm);
 			this.shadowRoot?.appendChild(save);
 
-			const songs = this.ownerDocument.createElement('custom-songs');
+			const songs = this.ownerDocument.createElement('app-song');
 			this.shadowRoot?.appendChild(songs);
 		});
 	}
 }
 
-customElements.define('app-song-card', SongCard);
+customElements.define('song-card', SongCard);
