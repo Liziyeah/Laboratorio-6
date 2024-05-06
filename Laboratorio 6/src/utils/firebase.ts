@@ -29,12 +29,12 @@ export const addMusic = async (formData: Omit<AddSong, 'id'>) => {
 
 export const getMusic = async () => {
 	const querySnapshot = await getDocs(collection(db, 'Music'));
-	const Arraysongs: Array<AddSong> = [];
+	const arraySongs: Array<AddSong> = [];
 
 	querySnapshot.forEach((doc: any) => {
 		const data = doc.data() as any;
-		Arraysongs.push({ id: doc.id, ...data });
+		arraySongs.push({ id: doc.id, ...data });
 	});
-	console.log('get', Arraysongs);
-	return Arraysongs;
+	console.log('get', arraySongs);
+	return arraySongs;
 };
